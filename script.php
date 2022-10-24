@@ -9,9 +9,7 @@
 </head>
 
 <body>
-    <a href="logout.php">Sign out</a>
     <?php
-// ALL KOD ÄR BÅDE DEL 1 OCH DEL 2 I INLÄMNING 6
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -36,10 +34,6 @@
     }
     $conn->close();
 
-    if ($login_success) {
-        session_start();
-        $_SESSION["username"] = $_POST["username"];
-    }
     ?>
 </body>
 
