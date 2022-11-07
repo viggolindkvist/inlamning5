@@ -19,21 +19,41 @@
     $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
 
+
+    $login_success = false;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if (
+                $row["username"] == $_POST["username"] &&
+                $row["password"] == $_POST["password"]
+            ) {
+                $login_success = true;
+                echo "Welcome back" . " " . $row["username"] . "!";
+            }
+        }
+    }
+    if (!$login_success) {
+        echo "Wrong username or password";
+    }
+    $conn->close();
+    /*
+
     $login_success = false;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($row["username"] == $_POST["username"] && $row["password"] == $_POST["password"]) {
                 $login_success = true;
                 echo "Success! Welcome back" . " " . $row["username"];
-            } else {
-                echo "Wrong username or password";
-            }
+                } else {
+                    $login_success = false;
+                    echo "Wrong username or password";
+                }
         }
     } else {
         echo "0 results";
     }
     $conn->close();
-
+*/
     ?>
 </body>
 
